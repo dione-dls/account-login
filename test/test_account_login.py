@@ -37,6 +37,19 @@ class TestAccountLogin(unittest.TestCase):
         prompt = self.show_text("div", "This email address is not valid")
         self.assertTrue(prompt.is_displayed())
 
+    def test_registered_user_email_with_account_selection(self):
+        selected_acct = "login__global-login__tenant-select__themistrypenguin__tenant__title"
+        acct_url = "https://themistrypenguin.perkbox.com/welcome/login"
+        self.input_email(self.registered_user)
+        self.scroll_then_click_submit_button(self.continue_btn)
+        message = self.show_text("span", "Please select a company you want to sign in to")
+        self.assertTrue(message.is_displayed())
+        self.driver.find_element_by_id(selected_acct).click()
+        self.scroll_then_click_submit_button(self.confirm_btn)
+        self.assertEqual(acct_url, self.driver.current_url)
+        email = self.driver.find_element_by_xpath(f"//input[@value='{self.registered_user}']")
+        self.assertTrue(email.is_displayed())
+
     def tearDown(self):
         self.driver.close()
 
