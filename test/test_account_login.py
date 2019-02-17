@@ -19,6 +19,12 @@ class TestAccountLogin(unittest.TestCase):
         self.driver.implicitly_wait(30)
         self.driver.find_element_by_name("email").click()
 
+    def test_no_email_input(self):
+        self.scroll_then_click_submit_button(self.continue_btn)
+        self.assertEqual(f"{self.login_page}/welcome/login", self.driver.current_url)
+        prompt = self.show_text("div", "Please enter your email")
+        self.assertTrue(prompt.is_displayed())
+
     def tearDown(self):
         self.driver.close()
 
