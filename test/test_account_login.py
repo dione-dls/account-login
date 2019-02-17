@@ -22,6 +22,17 @@ class TestAccountLogin(unittest.TestCase):
     def tearDown(self):
         self.driver.close()
 
+    def scroll_then_click_submit_button(self, button):
+        self.driver.execute_script(self.scroll)
+        self.driver.find_element_by_id(button).click()
+        self.driver.implicitly_wait(20)
+
+    def input_email(self, input_):
+        return self.driver.find_element_by_name("email").send_keys(input_)
+
+    def show_text(self, element, text):
+        return self.driver.find_element_by_xpath(f"//{element}[contains(text(),'{text}')]")
+
 
 if __name__ == "main":
     unittest.main()
