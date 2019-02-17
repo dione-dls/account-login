@@ -52,7 +52,7 @@ __3. Follow the steps below to run the automated tests:__
 
 ### Getting Started
 
-Note: Before running the program, please make sure that Python3 is available in your machine and to specifically switch to this version.
+Note: Before running the program, please make sure that Python3 is available in your machine and to specifically switch to this version. Python3 is available to download here: <https://www.python.org/downloads/>
 
 Using your command line, clone the repository to your local machine:
 
