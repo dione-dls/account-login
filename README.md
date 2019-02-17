@@ -89,6 +89,5 @@ Run this command on your terminal:
 ```sh
 $ python3 -m unittest test/test_account_login.py -v
 ```
-The following illustrates the test results afte the automated tests have run:
+The following illustrates the test results after the automated tests have run:
 ![](images/results.png)
-
