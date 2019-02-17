@@ -25,6 +25,12 @@ class TestAccountLogin(unittest.TestCase):
         prompt = self.show_text("div", "Please enter your email")
         self.assertTrue(prompt.is_displayed())
 
+    def test_unregistered_user_email_input(self):
+        self.input_email("dione@mail.com")
+        self.scroll_then_click_submit_button(self.continue_btn)
+        prompt = self.show_text("div", "User is not found")
+        self.assertTrue(prompt.is_displayed())
+
     def tearDown(self):
         self.driver.close()
 
