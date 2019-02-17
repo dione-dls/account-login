@@ -50,6 +50,15 @@ class TestAccountLogin(unittest.TestCase):
         email = self.driver.find_element_by_xpath(f"//input[@value='{self.registered_user}']")
         self.assertTrue(email.is_displayed())
 
+    def test_registered_user_email_no_account_selection(self):
+        self.input_email(self.registered_user)
+        self.scroll_then_click_submit_button(self.continue_btn)
+        message = self.show_text("span", "Please select a company you want to sign in to")
+        self.assertTrue(message.is_displayed())
+        self.scroll_then_click_submit_button(self.confirm_btn)
+        self.assertEqual(f"{self.login_page}/welcome/login", self.driver.current_url)
+        self.assertTrue(message.is_displayed())
+
     def tearDown(self):
         self.driver.close()
 
